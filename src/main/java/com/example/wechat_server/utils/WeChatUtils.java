@@ -1,6 +1,19 @@
 ﻿package com.example.wechat_server.utils;
 
-import com.sun.deploy.net.HttpResponse;
+import com.example.wechat_server.domin.AccessToken;
+import com.example.wechat_server.menu.Button;
+import com.example.wechat_server.menu.ClickButton;
+import com.example.wechat_server.menu.Menu;
+import com.example.wechat_server.menu.ViewButton;
+import net.sf.json.JSONObject;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.ParseException;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
 
 import java.io.BufferedReader;
 import java.io.DataInputStream;
@@ -15,7 +28,6 @@ import java.net.URL;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
-
 
 public class WeChatUtils {
 
@@ -56,7 +68,7 @@ public class WeChatUtils {
 		JSONObject obj = new JSONObject();
 
 		try {
-			HttpResponse response = client.execute(get);
+			HttpResponse response = (HttpResponse) client.execute(get);
 			obj = getJSONObject(obj, response);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -78,7 +90,7 @@ public class WeChatUtils {
 		try {
 			// 发出HTTP request
 			post.setEntity(new StringEntity(outStr, "UTF-8"));
-			HttpResponse response = client.execute(post);
+			HttpResponse response = (HttpResponse) client.execute(post);
 			obj = getJSONObject(obj, response);
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -10,10 +10,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.example.wechat_server.domin.BaseMessage;
-import com.example.wechat_server.domin.News;
-import com.example.wechat_server.domin.NewsMessage;
-import com.example.wechat_server.domin.TextMessage;
+import com.example.wechat_server.domin.*;
 import org.apache.http.ParseException;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
